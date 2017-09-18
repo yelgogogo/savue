@@ -2,15 +2,13 @@
   <div class="home">
     <mt-header fixed title="固定在顶部"></mt-header>
     
-    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <div>
-        <Card v-for="card in cardList" :card="card"></Card>
+
+      <div v-infinite-scroll="loadMore"
+  infinite-scroll-disabled="loading"
+  infinite-scroll-distance="10">
+        <Card v-for="card in cardList" :card="card" :expand="false"></Card>
       </div>
-    </mt-loadmore>
-    <mt-button type="default">default</mt-button>
-    <mt-button type="default">default</mt-button>
-    <mt-button type="primary">primary</mt-button>
-    <mt-button type="danger">danger</mt-button>
+
   </div>
 </template>
 
@@ -22,8 +20,8 @@ export default {
   name: 'Home',
   data () {
     return {
-      cardList: storyData.slice(0, 5),
-      allLoaded: false
+      loading: false,
+      cardList: storyData.slice(0, 5)
     }
   },
   components: {
@@ -35,21 +33,7 @@ export default {
       setTimeout(() => {
         this.cardList = storyData.slice(0, this.cardList.length + 5)
         this.loading = false
-      }, 2500)
-    },
-    loadTop () {
-      setTimeout(() => {
-        this.cardList = storyData.slice(0, this.cardList.length + 5)
-        // this.allLoaded = true
-        this.$refs.loadmore.onTopLoaded()
-      }, 2500)
-    },
-    loadBottom () {
-      setTimeout(() => {
-        this.cardList = storyData.slice(0, this.cardList.length + 5)
-        // this.allLoaded = true
-        this.$refs.loadmore.onBottomLoaded()
-      }, 2500)
+      }, 500)
     }
   }
 }

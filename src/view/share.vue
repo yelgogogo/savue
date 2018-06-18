@@ -45,7 +45,7 @@ export default {
       title: null,
       description: null,
       cover: '',
-      uploadUrl: 'http://nstart.cc:8090/upload'
+      uploadUrl: 'http://localhost:3201/upload'
     }
   },
   components: {
@@ -54,20 +54,20 @@ export default {
   },
   methods: {
     submit () {
-      const addStory = {
-        comments : [],
-        title: this.title,
-        delflag : false,
-        description: this.description,
-        cover : this.cover,
-        bayid : this.$route.params.id,
-        owner : '',
-        ownerid : '',
-        starttime : '',
-        visitors : [],
-        moneyimg : '',
-        likes : []
-      }
+      // const addStory = {
+      //   comments : [],
+      //   title: this.title,
+      //   delflag : false,
+      //   description: this.description,
+      //   cover : this.cover,
+      //   bayid : this.$route.params.id,
+      //   owner : '',
+      //   ownerid : '',
+      //   starttime : '',
+      //   visitors : [],
+      //   moneyimg : '',
+      //   likes : []
+      // }
     },
     getUser () {
       this.$store.commit('setUser', this.$store.getters.userlocal)

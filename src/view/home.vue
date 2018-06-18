@@ -1,13 +1,13 @@
 <template>
-  <div class="home" v-if="bay">
-    <mt-header v-if="!hideHeaderFlag" fixed :title="bay.name"></mt-header>
-    <img :src="bay.cover">    
+  <div class="home" >
+    <mt-header v-if="bay&&!hideHeaderFlag" fixed :title="bay.name"></mt-header>
+    <img v-if="bay" :src="bay.cover">    
     <div v-infinite-scroll="loadMore"
         infinite-scroll-disabled="loading"
         infinite-scroll-distance="30" >
       <Card v-for="card in cardList" :key="card.id" :card.sync="card" :expand="false" @comment-button="commentButton" @update:card="updateCard"></Card>
     </div>
-    <router-link :to="`/share/${bay.id}`">
+    <router-link v-if="bay" :to="`/share/${bay.id}`">
       <mt-button class="fab-btn"><i class="ion-plus-round"></i></mt-button>
     </router-link>
   </div>
@@ -58,17 +58,23 @@ export default {
       console.log(this.$store.getters.userlocal)
     },
     getData () {
-      Util.ajax.get('/bay', {
+      Util.ajax.get('/getStories', {
         params: {
-          user: {
-            bayid: parseInt(this.$route.params.id)
-          }
+          bayid: parseInt(this.$route.params.id)
+        }
+      }).then(res => {
+        // this.bay = res.data.data
+        this.storyData = res.data
+        this.cardList = this.storyData.slice(0, 5)
+      })
+
+      Util.ajax.get('/getBay', {
+        params: {
+          bayid: parseInt(this.$route.params.id)
         }
       }).then(res => {
         console.log(res)
-        this.bay = res.data.data
-        this.storyData = res.data.data.storys
-        this.cardList = this.storyData.slice(0, 5)
+        this.bay = res.data
       })
     },
     commentButton (story) {

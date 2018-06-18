@@ -23,7 +23,7 @@
       <autoTextarea v-model="description" :rows="0" :autofocus="true" placeholder="分享你的故事"></autoTextarea> 
     </div>
     <div class="save-box">
-        <mt-button class="save-btn" type="primary">分享</mt-button>
+        <mt-button @click.native="saveStory" class="save-btn" type="primary">分享</mt-button>
     </div>
   </div>
 </template>
@@ -32,6 +32,7 @@
 import Card from '../components/card'
 import Util from '../libs/util.js'
 import autoTextarea from '../components/auto-textarea'
+import moment from 'moment'
 
 // const storyData = require('../../static/storydb.json')
 
@@ -43,12 +44,16 @@ export default {
       bay: null,
       storyData: [],
       cardList: [],
+      userInfo: {
+        nickname: '1',
+        openid: '2'
+      },
       hideHeaderFlag: false,
       position: null,
       title: null,
       description: null,
       cover: '',
-      uploadUrl: 'http://localhost:3201/upload'
+      uploadUrl: 'http://localhost:3811/upload'
     }
   },
   components: {
@@ -56,39 +61,34 @@ export default {
     autoTextarea
   },
   methods: {
-    submit () {
-      // const addStory = {
-      //   comments : [],
-      //   title: this.title,
-      //   delflag : false,
-      //   description: this.description,
-      //   cover : this.cover,
-      //   bayid : this.$route.params.id,
-      //   owner : '',
-      //   ownerid : '',
-      //   starttime : '',
-      //   visitors : [],
-      //   moneyimg : '',
-      //   likes : []
-      // }
-    },
-    getUser () {
-      this.$store.commit('setUser', this.$store.getters.userlocal)
-      console.log(this.$store.getters.userlocal)
-    },
-    getData () {
-      Util.ajax.get('/bay', {
-        params: {
-          user: {
-            bayid: parseInt(this.$route.params.id)
-          }
+    saveStory () {
+      const addStory = {
+        comments: [],
+        title: this.title,
+        delflag: false,
+        description: this.description,
+        cover: this.cover,
+        bayid: parseInt(this.$route.params.id),
+        owner: this.userInfo.nickname,
+        ownerid: this.userInfo.openid,
+        starttime: moment().format('YYYY-MM-DD HH:mm:ss'),
+        visitors: [],
+        moneyimg: '',
+        likes: []
+      }
+      Util.ajax.post('/addStory', addStory).then(res => {
+        if (res.data.code === 0) {
+          this.$router.push('/home/' + this.$route.params.id)
         }
-      }).then(res => {
-        console.log(res)
-        this.bay = res.data.data
-        this.storyData = res.data.data.storys
-        this.cardList = this.storyData.slice(0, 5)
       })
+      console.log(addStory)
+    },
+    setUserInfo () {
+      localStorage.setItem('userInfo', JSON.stringify(this.userInfo))
+    },
+    getUserInfo () {
+      this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
+      console.log(this.userInfo)
     },
     commentButton (story) {
       console.log('commentButton')
@@ -115,7 +115,9 @@ export default {
       this.position = positionNow
     },
     handleAvatarSuccess (res, file) {
-      this.cover = URL.createObjectURL(file.raw)
+      console.log(Util)
+      console.log(Util.ajax.defaults.baseURL)
+      this.cover = Util.ajax.defaults.baseURL + '/' + res.path
     },
     beforeAvatarUpload (file) {
       const isJPG = file.type === 'image/jpeg'
@@ -130,9 +132,11 @@ export default {
       return isJPG && isLt2M
     }
   },
+  created () {
+    this.setUserInfo()
+  },
   mounted () {
-    this.getUser()
-    this.getData()
+    this.getUserInfo()
     window.addEventListener('scroll', this.handleScroll)
   }
 }
@@ -152,15 +156,14 @@ export default {
 }
 .mint-field {
   .mint-cell-value {
-
-    font-size: 0.36rem !important;
+    font-size: 36px!important;
   }
 }
 .share{
   width: 100%;
   background-color: $bg-color;
   height: -webkit-fill-available;
-  font-size:0.54rem;
+  font-size:36px;
   img{
     width:100%;
   }
@@ -174,25 +177,6 @@ export default {
     box-sizing: border-box;
     padding: $common-padding;
   }
-  .mint-header {
-    height:1rem;
-    font-size:0.54rem;
-  }
-
-    
-    
-  
-  .fab-btn {
-    top: 4.23rem;
-    right: 1rem;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 100%;
-    font-size: 0.48rem;
-    line-height: 0.48rem;
-    position: absolute;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-    background-color: $accent-color; 
-  }
 }
+
 </style>

@@ -35,6 +35,13 @@ export default {
     Card
   },
   methods: {
+    setUserInfo () {
+      localStorage.setItem('userInfo', JSON.stringify(this.userInfo))
+    },
+    getUserInfo () {
+      this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
+      console.log(this.userInfo)
+    },
     updateCard (e) {
       console.log(e)
       this.storyData.forEach((c, i) => {
@@ -115,22 +122,22 @@ export default {
 .home{
 /*  padding: 24px 16px;*/
   height: -webkit-fill-available;
-  font-size:0.54rem;
+  font-size:32px;
   img{
     width:100%;
   }
   .mint-header {
-    height:1rem;
-    font-size:0.54rem;
+    height:80px;
+    font-size:36px;
   }
   .fab-btn {
-    top: 4.23rem;
-    right: 1rem;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 100%;
-    font-size: 0.48rem;
-    line-height: 0.48rem;
+    top: 200px;
+    right: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 32px;
+    line-height: 32px;
     position: absolute;
     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
     background-color: #ffd740; 

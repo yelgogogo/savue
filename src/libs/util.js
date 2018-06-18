@@ -7,7 +7,7 @@ util.title = function (title) {
   window.document.title = title
 }
 
-const ajaxUrl = env === 'development' ? 'http://nstart.cc:8090' : env === 'production' ? 'https://www.url.com' : 'https://debug.url.com'
+const ajaxUrl = env === 'development' ? 'http://localhost:3811' : env === 'production' ? 'http://www.starstech.tech:3812' : 'http://www.starstech.tech:3812'
 
 util.ajax = axios.create({
   baseURL: ajaxUrl,

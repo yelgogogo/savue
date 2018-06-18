@@ -7,18 +7,13 @@ import '../style.css'
 import store from './store'
 import { Input, Upload } from 'element-ui'
 // import VueTouch from 'vue-touch'
-import { Button, Cell, Header, InfiniteScroll, Popup, Field } from 'mint-ui'
+import Mint from 'mint-ui'
+Vue.use(Mint)
 
 Vue.config.productionTip = false
 
 Vue.use(Upload)
 Vue.use(Input)
-Vue.component(Field.name, Field)
-Vue.component(Button.name, Button)
-Vue.component(Cell.name, Cell)
-Vue.component(Header.name, Header)
-Vue.component(Popup.name, Popup)
-Vue.use(InfiniteScroll)
 // Vue.use(VueTouch)
 
 /* eslint-disable no-new */

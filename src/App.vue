@@ -18,7 +18,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 1rem;
+  margin-top: 80px;
 }
 
 body {
@@ -26,7 +26,7 @@ body {
 }
 
 .el-textarea__inner{
-  font-size:0.54rem;
+  font-size:40px;
 }
 
 p { 

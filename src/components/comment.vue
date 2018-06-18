@@ -48,14 +48,14 @@ export default {
 @import "../../style.scss";
 
 $notice-color: #919191;
-$notice-font-size:0.30rem;
+$notice-font-size:15px;
 
 .expandcomment {
-  margin: 0.30rem 0rem;
+  margin: 15px 0rem;
 }
 
 .collapsecomment {
-  margin: 0.30rem 0.30rem;
+  margin: 15px 15px;
 }
 
 .comment {
@@ -65,28 +65,28 @@ $notice-font-size:0.30rem;
   will-change: box-shadow;
   display: block;
   position: relative;
- /* padding: 0.24rem; */
+ /* padding: 12px; */
   border-radius: 2px;
   font-family: Roboto,Helvetica Neue,sans-serif;
   font-size: $common-font-size;
-  /* margin: 0.30rem 0.30rem; */
+  /* margin: 15px 15px; */
   text-align:left;
   overflow: hidden;
   .header {
-    padding: 0.24rem 0.24rem 0 0.24rem;
+    padding: 12px 12px 0 12px;
 
     .row{
       .col{
         .avatar{
           background-size: cover;
-          width: 1.20rem;
-          height: 1.20rem;
+          width: 60px;
+          height: 60px;
           border-radius: 50%;
         }
       }
       
       .title {
-        line-height:0.60rem;
+        line-height:30px;
         font-size:$notice-font-size;
       }
 
@@ -110,8 +110,8 @@ $notice-font-size:0.30rem;
       width: 100%
     }
     p {
-      padding: 0 0.24rem 0.24rem 0.24rem;
-      margin: 0 0 0.24rem 0;
+      padding: 0 12px 12px 12px;
+      margin: 0 0 12px 0;
     }
   }
 
@@ -120,7 +120,7 @@ $notice-font-size:0.30rem;
       font-size:$notice-font-size;
     }
     
-    padding: 0 0 0.24rem 0;
+    padding: 0 0 12px 0;
 
   }
 }

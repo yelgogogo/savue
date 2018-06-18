@@ -42,12 +42,12 @@ export default {
 <style scoped>
 
 .icon-img {
-    width: .80rem;
-    height: .80rem;
+    width: 40px;
+    height: 40px;
     border: 1px solid #007aff;
     border-radius: 100%;
     overflow: hidden;
-    padding: 0.3rem auto;
+    padding: 15px auto;
 }
 .icon-img img{width: 100%;}
 </style>

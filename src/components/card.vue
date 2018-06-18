@@ -141,11 +141,11 @@ export default {
 @import "../../style.scss";
 
 .expandCard {
-  margin: 0.30rem 0rem;
+  margin: 15px 0;
 }
 
 .collapseCard {
-  margin: 0.30rem 0.30rem;
+  margin: 15px 15px;
 }
 
 .card {
@@ -155,27 +155,27 @@ export default {
   will-change: box-shadow;
   display: block;
   position: relative;
- /* padding: 0.24rem; */
+ /* padding: 12px; */
   border-radius: 2px;
  /* font-family: Roboto,Helvetica Neue,sans-serif; */
-  /* margin: 0.30rem 0.30rem; */
+  /* margin: 15px 15px; */
   text-align:left;
   overflow: hidden;
   .header {
-    padding: 0.24rem 0.24rem 0 0.24rem;
+    padding: 12px 12px 0 12px;
 
     .row{
       .col{
         .avatar{
           background-size: cover;
-          width: 1.20rem;
-          height: 1.20rem;
+          width: 60px;
+          height: 60px;
           border-radius: 50%;
         }
       }
       
       .title {
-        line-height:0.60rem;
+        line-height:30px;
         font-size:$notice-font-size;
       }
 
@@ -200,8 +200,8 @@ export default {
       width: 100%
     }
     p {
-      padding: 0.24rem;
-      margin: 0 0 0.24rem 0;
+      padding: 12px;
+      margin: 0 0 12px 0;
     }
   }
 
@@ -211,7 +211,7 @@ export default {
       color:$primary-color;
     }
     
-    padding: 0 0 0.24rem 0;
+    padding: 0 0 12px 0;
 
   }
 }

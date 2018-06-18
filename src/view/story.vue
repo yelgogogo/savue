@@ -17,7 +17,7 @@
     </div>
     <div class="footer row" v-if="showAddCommentFlag">
       <div class="col">
-        <autoTextarea v-model="addcomment" class="footer-text" :fontSize="'0.54rem'" :autofocus="true" :rows="5"></autoTextarea> 
+        <autoTextarea v-model="addcomment" class="footer-text" :fontSize="'54px'" :autofocus="true" :rows="5"></autoTextarea> 
       </div>
       <div class="col col-20 footer-button">
         <mt-button v-if="addcomment" :type="addcomment?'primary':'default'" :disabled="!addcomment" size="large" @click="submitComment">发送</mt-button>
@@ -154,7 +154,7 @@ export default {
     width:100%;
   }
   .mint-header {
-    height:1rem;
+    height:100px;
     font-size:inherit;
     .mint-button {
       height: -webkit-fill-available;
@@ -170,7 +170,7 @@ export default {
   .footer {
     .footer-text {
       width:100%;
-      font-size:0.54rem;
+      font-size:54px;
     }
     position: fixed;
     bottom: 0;

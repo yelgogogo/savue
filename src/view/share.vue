@@ -20,7 +20,10 @@
       </el-upload>
     </div>
     <div class="description">
-    <autoTextarea v-model="description" :rows="0" :autofocus="true" placeholder="分享你的故事"></autoTextarea> 
+      <autoTextarea v-model="description" :rows="0" :autofocus="true" placeholder="分享你的故事"></autoTextarea> 
+    </div>
+    <div class="save-box">
+        <mt-button class="save-btn" type="primary">分享</mt-button>
     </div>
   </div>
 </template>
@@ -138,7 +141,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "../../style.scss";
+.save-box {
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
 
+}
+.save-btn {
+  width: 90%;
+}
 .mint-field {
   .mint-cell-value {
 

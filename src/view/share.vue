@@ -15,8 +15,10 @@
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload">
-        <img v-if="cover" :src="cover" class="avatar">
-        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        <div class="story-cover">
+          <img v-if="cover" :src="cover" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </div>
       </el-upload>
     </div>
     <div class="description">
@@ -145,6 +147,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "../../style.scss";
+.story-cover {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
 .save-box {
   position: absolute;
   bottom: 60px;

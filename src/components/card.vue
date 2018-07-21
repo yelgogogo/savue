@@ -7,8 +7,8 @@
         <img class="avatar" :src="card.avatar?card.avatar:'/static/default.jpg'">
       </div>
       <div class="col title">
-        <b>{{card.title}}</b>
-        <div>{{card.role}} {{card.starttime}}</div>
+        <b class="card-title">{{card.title}}</b>
+        <div class="card-subtitle">{{card.role}} {{card.starttime}}</div>
       </div>
       <div class="card-visitor">
         <i class="ion-person-stalker"></i>{{card.visitors?card.visitors.length:0}}
@@ -148,6 +148,13 @@ export default {
   margin: 15px 15px;
 }
 
+.card-title {
+  font-size: 22px;
+}
+
+.card-subtitle {
+  font-size: 18px;
+}
 .card {
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
   -webkit-transition: box-shadow .28s cubic-bezier(.4,0,.2,1);
@@ -180,7 +187,7 @@ export default {
       }
 
       .card-visitor{
-        font-size:$notice-font-size;
+        font-size: 20px;
         color:$notice-color;
         text-align:right;
         float: right;
@@ -194,12 +201,14 @@ export default {
   }
 
   .content {  
+    
     white-space: pre-line;
     font-size: $common-font-size;
     .full-image {
       width: 100%
     }
     p {
+      font-size: 18px;
       padding: 12px;
       margin: 0 0 12px 0;
     }
@@ -207,7 +216,7 @@ export default {
 
   .footer {
     .mint-button{
-      font-size:$notice-font-size;
+      font-size:20px;
       color:$primary-color;
     }
     

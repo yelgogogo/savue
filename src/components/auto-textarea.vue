@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     maxHeight () {
-      const maxHeight = {maxHeight: (0.46 * this.rows) + 'rem'}
+      const maxHeight = {maxHeight: (40 * this.rows) + 'px'}
       return this.rows ? maxHeight : null
     }
   },

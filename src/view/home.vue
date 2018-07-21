@@ -123,18 +123,18 @@ export default {
 /*  padding: 24px 16px;*/
   height: -webkit-fill-available;
   font-size:32px;
-  img{
-    width:100%;
+  img {
+    width: 100%;
   }
   .mint-header {
-    height:80px;
-    font-size:36px;
+    height:60px;
+    font-size:24px;
   }
   .fab-btn {
-    top: 200px;
+    top: 220px;
     right: 10px;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     font-size: 32px;
     line-height: 32px;

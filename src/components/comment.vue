@@ -117,7 +117,6 @@ $notice-font-size:15px;
 
   .footer {
     .mint-button{
-      font-size:$notice-font-size;
     }
     
     padding: 0 0 12px 0;

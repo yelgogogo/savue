@@ -52,7 +52,6 @@
           <div>
             <i v-if="!likeDone" class="ion-ios-heart-outline" ></i>
             <i v-else class="ion-ios-heart"></i>
-            <span v-if="expandflag">赞</span>
             {{card.likes?card.likes.length:0}} 
           </div>
         </mt-button>
@@ -60,7 +59,6 @@
       <div class="col col-20">
         <mt-button size="large" @click="commentButtonClick">
           <i class="ion-ios-list-outline"></i>
-          <span v-if="expandflag">评论</span>
           {{card.comments.length}}
         </mt-button>
       </div>
@@ -149,7 +147,7 @@ export default {
 }
 
 .card-title {
-  font-size: 22px;
+  font-size: 16px;
 }
 
 .card-subtitle {
@@ -216,7 +214,6 @@ export default {
 
   .footer {
     .mint-button{
-      font-size:20px;
       color:$primary-color;
     }
     

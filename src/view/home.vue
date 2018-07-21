@@ -127,7 +127,6 @@ export default {
     width: 100%;
   }
   .mint-header {
-    height:60px;
     font-size:24px;
   }
   .fab-btn {

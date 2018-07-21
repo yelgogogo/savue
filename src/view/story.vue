@@ -154,11 +154,9 @@ export default {
     width:100%;
   }
   .mint-header {
-    height:100px;
     font-size:inherit;
     .mint-button {
-      height: -webkit-fill-available;
-      font-size:$header-icon-size;
+      height: 40px;
     }
   }
   .need-comment{

@@ -62,14 +62,27 @@
           {{card.comments.length}}
         </mt-button>
       </div>
+      <div class="col col-20">
+        <mt-button size="large" @click="shareToWeichat">
+          <i class="ion-android-share-alt"></i>
+        </mt-button>
+      </div>
     </div>
   </div>
-
+  <mt-popup
+    v-model="showQrCode"
+    popup-transition="popup-fade">
+  <div class="qr-code">
+    <canvas id="canvas"></canvas>
+  </div>
+</mt-popup>
+  
 </div>
 </template>
 
 <script>
 import Util from '../libs/util.js'
+import QrCode from 'qrcode'
 
 export default {
   name: 'Card',
@@ -89,6 +102,7 @@ export default {
   },
   data () {
     return {
+      showQrCode: false,
       expandflag: this.expand
     }
   },
@@ -105,6 +119,21 @@ export default {
     }
   },
   methods: {
+    shareToWeichat () {
+      this.showQrCode = true
+      this.initQrCode()
+    },
+    initQrCode () {
+      // let redirectyrl = location.href
+      let redirectyrl = 'https://www.starstech.cc'
+      let url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd97ecfda77d6b9ae&redirect_uri=' + redirectyrl + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
+      // alert(url)
+      QrCode.toCanvas(document.getElementById('canvas'), url, {scale: 5}, function (error) {
+        if (error) {
+          alert(error)
+        }
+      })
+    },
     expandCard () {
       this.expandflag = true
     },
@@ -137,7 +166,9 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "../../style.scss";
-
+.qr-code {
+  width: 100%;
+}
 .expandCard {
   margin: 15px 0;
 }
